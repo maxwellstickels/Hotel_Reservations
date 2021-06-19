@@ -1,4 +1,4 @@
-const { Model, DataTypes } = require('sequelize');
+const { Model, DataTypes, TINYINT } = require('sequelize');
 const sequelize = require('../config/connection');
 
  
@@ -32,6 +32,10 @@ Comment.init(
                 model: 'reservation',
                 key: 'id'
             }
+        },
+        rating: {
+            type:DataTypes.TINYINT,
+            allowNull: false
         }
     },
     {

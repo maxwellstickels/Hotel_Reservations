@@ -26,13 +26,13 @@ Reservation.init(
                 key: 'id',
             },
         },
-        room_id: {
-            type: DataTypes.INTEGER,
-            references: {
-                model: 'room',
-                key: 'id',
-            },
-        }
+        // room_id: {
+        //     type: DataTypes.INTEGER,
+        //     references: {
+        //         model: 'room',
+        //         key: 'id',
+        //     },
+        // }
     },
     {
         sequelize,
