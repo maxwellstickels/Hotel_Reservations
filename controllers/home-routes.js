@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
+const withAuth = require('../utils/auth');
 
 // Currently just rendering main.handlebars.
 router.get('/', async (req, res) => {

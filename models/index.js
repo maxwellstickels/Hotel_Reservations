@@ -1,7 +1,7 @@
 const User = require('./User');
 const Reservation = require('./Reservation');
 const Comment = require('./Comment');
-const Rating = require('./Rating');
+
 const Room = require('./Room');
 
 User.hasMany(Reservation, {
@@ -10,11 +10,6 @@ User.hasMany(Reservation, {
 });
 
 User.hasMany(Comment, {
-    foreignKey: 'user_id',
-    onDelete: 'cascade'
-});
-
-User.hasMany(Rating, {
     foreignKey: 'user_id',
     onDelete: 'cascade'
 });
@@ -37,29 +32,22 @@ Comment.belongsTo(Reservation, {
     foreignKey: 'reservation_id'
 });
 
-Rating.belongsTo(User, {
-    foreignKey: 'user_id' 
-});
-
-Rating.belongsTo(Reservation, {
-    foreignKey: 'reservation_id'
-});
 
 Room.belongsTo(Reservation, {
     foreignKey: 'reservation_id'
 });
 
-Reservation.hasMany(Room, {
-    foreignKey: 'reservation_id'
-});
+// Reservation.hasMany(Room, {
+//     foreignKey: 'reservation_id'
+// });
 
-Room.belongsTo(User, {
-    foreignKey: 'user_id'
-});
+// Room.belongsTo(User, {
+//     foreignKey: 'user_id'
+// });
 
-User.hasMany(Room, {
-    foreignKey: 'user_id'
-});
+// User.hasMany(Room, {
+//     foreignKey: 'user_id'
+// });
 
 
-module.export = { User, Reservation, Comment, Rating, Room };
+module.export = { User, Reservation, Comment, Room };
