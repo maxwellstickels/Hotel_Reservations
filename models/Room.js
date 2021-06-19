@@ -18,6 +18,14 @@ Room.init(
         room_type: {
             type: DataTypes.STRING,
         },
+
+        reservation_id: {
+            type: DataTypes.INTEGER,
+            references: {
+                model: 'reservation',
+                key: 'id',
+            },
+        }
     },
     {
         sequelize,
