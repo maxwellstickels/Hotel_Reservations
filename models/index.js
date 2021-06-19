@@ -1,22 +1,65 @@
-const Reservation = require('./Reservation');
-const Room = require('./Room');
 const User = require('./User');
+const Reservation = require('./Reservation');
+const Comment = require('./Comment');
+const Rating = require('./Rating');
+const Room = require('./Room');
 
-Reservation.hasOne(Room, {
-    foreignKey: 'room_id',
+User.hasMany(Reservation, {
+    foreignKey: 'user_id',
+    onDelete: 'cascade'
 });
 
-Reservation.hasOne(User, {
+User.hasMany(Comment, {
     foreignKey: 'user_id',
+    onDelete: 'cascade'
+});
+
+User.hasMany(Rating, {
+    foreignKey: 'user_id',
+    onDelete: 'cascade'
+});
+
+Reservation.belongsTo(User, {
+    foreignKey: 'user_id' 
+});
+
+Reservation.hasMany(Comment, {
+    foreignKey: 'reservation_id',
+    onDelete: 'cascade'
+});
+
+Comment.belongsTo(User, {
+    foreignKey: 'user_id',
+    onDelete: 'cascade'
+});
+
+Comment.belongsTo(Reservation, {
+    foreignKey: 'reservation_id'
+});
+
+Rating.belongsTo(User, {
+    foreignKey: 'user_id' 
+});
+
+Rating.belongsTo(Reservation, {
+    foreignKey: 'reservation_id'
 });
 
 Room.belongsTo(Reservation, {
-    foreignKey: 'room_id',
+    foreignKey: 'reservation_id'
 });
 
-User.belongsToMany(Reservation, {
-    foreignKey: 'user_id',
-    unique:false,
+Reservation.hasMany(Room, {
+    foreignKey: 'reservation_id'
 });
 
-module.exports = { Reservation, Room, User };
+Room.belongsTo(User, {
+    foreignKey: 'user_id'
+});
+
+User.hasMany(Room, {
+    foreignKey: 'user_id'
+});
+
+
+module.export = { User, Reservation, Comment, Rating, Room };
