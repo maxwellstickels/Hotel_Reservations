@@ -1,4 +1,4 @@
-const withAuth = (req, res, next) => {
+const managerAuth = (req, res, next) => {
     if (!req.session.logged_in) {
         res.redirect('/login');
     }
@@ -10,4 +10,4 @@ const withAuth = (req, res, next) => {
     }
 };
 
-module.exports = withAuth;
+module.exports = managerAuth;
