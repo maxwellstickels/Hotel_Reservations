@@ -55,7 +55,8 @@ router.post('/', (req, res) => {
     User.create({
       username: req.body.username,
       email: req.body.email,
-      password: req.body.password
+      password: req.body.password,
+      manager: 0
     })
       
       .then(dbUserData => {
@@ -63,7 +64,7 @@ router.post('/', (req, res) => {
           req.session.user_id = dbUserData.id;
           req.session.username = dbUserData.username;
           req.session.loggedIn = true;
-      
+          req.session.manager = false;
           res.json(dbUserData);
         });
       })
@@ -98,6 +99,7 @@ router.post('/', (req, res) => {
           req.session.user_id = dbUserData.id;
           req.session.username = dbUserData.username;
           req.session.loggedIn = true;
+          req.session.manager = Boolean(dbUserData.manager);
     
           res.json({ user: dbUserData, message: 'You are now logged in!' });
         });
