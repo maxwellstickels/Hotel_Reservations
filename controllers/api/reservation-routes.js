@@ -1,12 +1,15 @@
 const router = require('express').Router();
 
-const { User, Reservation, Comment } = require('../../models');
+const User = require('../../models/User');
+const Reservation = require('../../models/Reservation');
+const Comment = require('../../models/Comment');
 
 const sequelize = require('../../config/connection');
 
 const withAuth = require('../../utils/auth');
+const managerAuth = require('../../utils/managerAuth');
 
-router.get('/', (req, res) => {
+router.get('/', managerAuth, (req, res) => {
     Reservation.findAll({
 
         attributes: [
@@ -42,7 +45,7 @@ router.get('/', (req, res) => {
 });
 
 
-router.get('/:id', (req, res) => {
+router.get('/:id', withAuth, (req, res) => {
     Reservation.findOne({
       where: {
         id: req.params.id
