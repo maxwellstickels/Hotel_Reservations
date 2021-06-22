@@ -8,6 +8,6 @@ const reservationRoutes = require('./reservation-routes');
 
 router.use('/users', userRoutes);
 router.use('/reservations', reservationRoutes);
-// router.use('/comments', commentRoutes);
+router.use('/comments', commentRoutes);
 
 module.exports = router;
