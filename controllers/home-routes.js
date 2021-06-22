@@ -5,7 +5,7 @@ const withAuth = require('../utils/auth');
 // Currently just rendering main.handlebars.
 router.get('/', async (req, res) => {
     try {
-        res.render('main', { 
+        res.render('homepage', { 
             logged_in: req.session.logged_in 
         });
     } catch (err) {
