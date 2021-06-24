@@ -1,6 +1,11 @@
-/* .bg-dark {
+.bg-dark {
   background-color: skyblue;
-} */
+}
+
+.hotel-background {
+  width: 100%;
+  background-image: url("https://www.gannett-cdn.com/-mm-/f85d715f4ef18e245988237e803cdef2db1daf68/c=0-255-4256-2656/local/-/media/USATODAY/test/2013/10/25/1382729502000-160857233.jpg");
+}
 
 .bg-warning {
   background-color: #0dcaf0!important;
@@ -10,3 +15,4 @@ button a {
   text-decoration: none;
   color: black;
 }
+
