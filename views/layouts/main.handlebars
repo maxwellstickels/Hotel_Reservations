@@ -24,13 +24,29 @@
           
           <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
             <li><a href="/" class="nav-link nav-bright px-2 text-white">Home</a></li>
-            <li><a href="/" class="nav-link nav-bright px-2 text-lightgray">Reservations</a></li>
+            <li><a href="/reservation" class="nav-link nav-bright px-2 text-lightgray">Reservations</a></li>
             <li><a href="/" class="nav-link nav-bright px-2 text-lightgray">Accommodations</a></li>
             <li><a href="/" class="nav-link nav-bright px-2 text-lightgray">Places</a></li>
           </ul>
         <div class="text-end">
           <button type="button" class="btn btn-outline-light me-2">Login</button>
           <button type="button" class="btn btn-info">Sign-up</button>
+          {{#if loggedIn}}
+            <li class="nav-item">
+              <a href="/dashboard">Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <button id="logout" class="btn-no-style">Logout</button>
+            </li>
+
+            {{else}}
+              <button type="button" class="btn btn-outline-dark me-2">
+                <a href="/login">Login</a>
+              </button>
+              <button type="button" class="btn btn-light">
+                <a href="/signup">Sign-up</a>
+              </button>
+            {{/if}}
         </div>
       </div>
     </nav>
