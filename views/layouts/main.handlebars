@@ -29,8 +29,6 @@
             <li><a href="/" class="nav-link nav-bright px-2 text-lightgray">Places</a></li>
           </ul>
         <div class="text-end">
-          <button type="button" class="btn btn-outline-light me-2">Login</button>
-          <button type="button" class="btn btn-info">Sign-up</button>
           {{#if loggedIn}}
             <li class="nav-item">
               <a href="/dashboard">Dashboard</a>
@@ -40,10 +38,10 @@
             </li>
 
             {{else}}
-              <button type="button" class="btn btn-outline-dark me-2">
+              <button type="button" class="btn btn-outline-light me-2">
                 <a href="/login">Login</a>
               </button>
-              <button type="button" class="btn btn-light">
+              <button type="button" class="btn btn-info">
                 <a href="/signup">Sign-up</a>
               </button>
             {{/if}}
