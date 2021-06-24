@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 * {
   margin:0;
   padding:0;
@@ -55,4 +56,8 @@ header h1 {
     font-size: 50px;
     font-style: oblique;
     background-color: gold;
+=======
+.bg-dark {
+  background-color: skyblue;
+>>>>>>> 223322f61f124a3cab0a971684f980683628862f
 }
