@@ -4,65 +4,69 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
-    
-
-    <title>Hotel</title>
+    <title>Hotel Coding - The Best Hotel, No Questions Asked!</title>
 </head>
 <body>
-   <header class="p-3 bg-info text-white">
-    <div class="container">
-      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
-          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
-        </a>
-        
-        <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="/" class="nav-link px-2 text-secondary">Home</a></li>
-          <li><a href="/reservation" class="nav-link px-2 text-dark">Reservations</a></li>
-          <li><a href="#" class="nav-link px-2 text-dark">Accommodations</a></li>
-          <li><a href="#" class="nav-link px-2 text-dark">Places</a></li>
-        </ul>
-
-        {{#if loggedIn}}
-          <li class="nav-item">
-            <a href="/dashboard">Dashboard</a>
-          </li>
-          <li class="nav-item">
-            <button id="logout" class="btn-no-style">Logout</button>
-          </li>
-
-          {{else}}
-            <button type="button" class="btn btn-outline-dark me-2">
-          <a href="/login">Login</a>
-            </button>
-          {{/if}}
-
+  <header>
+    <img class="logo" src="main-logo.png">
+    <img class="logo-bg" src="code-background.jpeg">  
+    <nav class="p-3 text-white">
+      <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+          <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+            <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+          </a>
+          
+          <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+            <li><a href="/" class="nav-link nav-bright px-2 text-white">Home</a></li>
+            <li><a href="/reservation" class="nav-link nav-bright px-2 text-lightgray">Reservations</a></li>
+            <li><a href="/" class="nav-link nav-bright px-2 text-lightgray">Accommodations</a></li>
+            <li><a href="/" class="nav-link nav-bright px-2 text-lightgray">Places</a></li>
+          </ul>
         <div class="text-end">
-          {{!-- <button type="button" class="btn btn-outline-dark me-2">Login</button> --}}
-          <button type="button" class="btn btn-light">
-          <a href="/signup">Sign-up</a>
-          </button>
+          {{#if loggedIn}}
+            <li class="nav-item">
+              <a href="/dashboard">Dashboard</a>
+            </li>
+            <li class="nav-item">
+              <button id="logout" class="btn-no-style">Logout</button>
+            </li>
+
+            {{else}}
+              <button type="button" class="btn btn-outline-light me-2">
+                <a href="/login">Login</a>
+              </button>
+              <button type="button" class="btn btn-info">
+                <a href="/signup">Sign-up</a>
+              </button>
+            {{/if}}
         </div>
       </div>
-    </div>
+    </nav>
   </header>
 
-    <div class="card bg-dark text-white text-left hotel-background">
-    <h5 class="card-title fs-1">Hotel Coding</h5>
-    <p class="card-text fs-3">A programmers paradise!</p>
-    <p class="card-text fs-5">Last updated 3 mins ago</p>
-
-    <main>
+  <div class="card bg-dark text-white text-left no-border">
+    <img src="https://www.gannett-cdn.com/-mm-/f85d715f4ef18e245988237e803cdef2db1daf68/c=0-255-4256-2656/local/-/media/USATODAY/test/2013/10/25/1382729502000-160857233.jpg" alt="...">
+    <div class="card-img-overlay no-border">
+      <h5 class="card-title fs-1">Hotel Coding</h5>
+      <p class="card-text fs-3">A programmers paradise!</p>
+      <main>
         {{{body}}}
-    </main>
-</div>
-   <footer class="footer bg-info">
+      </main>
+    </div>
+  </div>
+
+  <footer class="footer text-lightgray">
       <div class="container">
-        <span class="text-muted">This is the footer</span>
+        <span>© Hotel Coding 2021 (Not Really)</span>
       </div>
-    </footer>
+  </footer>
+
     <div id="content-placeholder"></div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
