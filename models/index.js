@@ -31,7 +31,6 @@ Comment.belongsTo(Reservation, {
     foreignKey: 'reservation_id'
 });
 
-
 Room.belongsTo(Reservation, {
     foreignKey: 'reservation_id'
 });
