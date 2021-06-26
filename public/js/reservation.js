@@ -1,28 +1,28 @@
-// async function newFormHandler(event) {
-//     event.preventDefault();
+async function newFormHandler(event) {
+    event.preventDefault();
 
-//     const reservation = document.querySelector('input[name="reservation"]').value;
-//     const room = document.querySelector('textarea[name="room"]').value;
+    const reservation = document.querySelector('input[name="reservation"]').value;
+    const room = document.querySelector('textarea[name="room"]').value;
 
-//     const response = await fetch(`/api/reservation`, {
-//       method: 'POST',
-//       body: JSON.stringify({
-//         reservation,
-//         room
-//       }),
-//       headers: {
-//         'Content-Type': 'application/json'
-//       }
-//     });
+    const response = await fetch(`/api/reservations`, {
+      method: 'POST',
+      body: JSON.stringify({
+        reservation,
+        room
+      }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
 
-//     if (response.ok) {
-//       document.location.replace('/dashboard');
-//     } else {
-//       alert(response.statusText);
-//     }
-// }
+    if (response.ok) {
+      document.location.replace('/dashboard');
+    } else {
+      alert(response.statusText);
+    }
+}
   
-// document.querySelector('.new-reservation-form').addEventListener('submit', newFormHandler);
+document.querySelector('.new-reservation-form').addEventListener('submit', newFormHandler);
 
 function empty() {
     var room = $("#room").val();

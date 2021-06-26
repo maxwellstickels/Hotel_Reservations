@@ -102,11 +102,24 @@ router.post('/', (req, res) => {
           req.session.username = dbUserData.username;
           req.session.loggedIn = true;
           req.session.manager = Boolean(dbUserData.manager);
-    
-          res.redirect("/");
+
+          res.json({ user: dbUserData, message: 'You are now logged in!' });
+      
         });
+        // res.redirect("../../");
     });  
-});
+  });
+
+//   router.post('/login', withAuth, (req, res) => {
+//     if(req.session.loggedIn) {
+//         req.session.destroy(() => {
+//             res.status(202).end(); 
+//         });
+//     }
+//     else {
+//         res.status(404).end();
+//     }
+// });
 
 router.put('/:id', withAuth, (req, res) => {
     User.update(req.body, {
