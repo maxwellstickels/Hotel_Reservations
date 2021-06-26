@@ -40,6 +40,10 @@ Reservation.hasMany(Room, {
     foreignKey: 'reservation_id'
 });
 
+// Comment.hasOne(Reservation, {
+//     foreignKey: 'comment_id'
+// });
+
 // Room.belongsTo(User, {
 //     foreignKey: 'user_id'
 // });
