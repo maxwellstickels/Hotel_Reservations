@@ -1,42 +1,39 @@
 
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-const Reservation = require('../models/Reservation');
-const Comment = require('../models/Comment');
-const User = require('../models/User');
+const {Reservation, Comment, User} = require('../models');
+// const Comment = require('../models/Comment');
+// const User = require('../models/User');
 const withAuth = require('../utils/auth')
 
 router.get('/', withAuth, (req, res) => {
   
-    Reservation.findAll({
+  Reservation.findAll({
       where: {
         user_id: req.session.user_id
-      }
-      // ,
-      // attributes: [
-      //   'id',
-      //   'start_date',
-      //   'end_date',
-      //   'user_id',
-      // ],
-      // include: [
-      //   {
-      //     model: Comment,
-      //     attributes: ['id', 'comment_text', 'user_id', 'created_at'],
-      //     include: {
-      //         model: User,
-      //         attributes: ['username'],
-      //     }
-      //   },
-      //   {
-      //     model: User,
-      //     attributes: ['username']
-      //   }
-      // ]
+      },
+      attributes: [
+        'id',
+        'start_date',
+        'end_date',
+        'user_id',
+      ],
+      include: [
+        {
+          model: Comment,
+          attributes: ['id', 'comment_text', 'user_id', 'created_at'],
+          include: {
+              model: User,
+              attributes: ['username'],
+          }
+        },
+        {
+          model: User,
+          attributes: ['username']
+        }
+      ]
     })
       .then(dbReservationData => {
-
-        console.log("dbReservationData: *****",dbReservationData);
         const reservations = dbReservationData.map(reservation => reservation.get({ plain: true }));
         res.render('dashboard', { reservations, loggedIn: true });
       })

@@ -24,7 +24,6 @@ Reservation.hasMany(Comment, {
 
 Comment.belongsTo(User, {
     foreignKey: 'user_id',
-    onDelete: 'cascade'
 });
 
 Comment.belongsTo(Reservation, {
@@ -52,4 +51,4 @@ Reservation.hasMany(Room, {
 // });
 
 
-module.export = { User, Reservation, Comment, Room };
+module.exports = { User, Reservation, Comment, Room };

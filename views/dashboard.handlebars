@@ -4,16 +4,18 @@
   </div>
 </section>
 
-{{#if reservation.length}}
+{{#if reservations.length}}
 <section>
   <h2>Your Reservations</h2>
   <ol>
-    {{#each reservation as |reservation|}}
-    {{!-- <li>
-      {{> post-info post}}
-      <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit Reservation</a>
-    </li> --}}
+    {{#each reservations}}
+    <li>
+      {{format_date start_date}}
+      {{!-- <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit Reservation</a> --}}
+    </li>
     {{/each}}
   </ol>
 </section>
 {{/if}}
+
+<script src= "../utils/helpers.js"></script>
