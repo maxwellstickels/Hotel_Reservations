@@ -1,35 +1,18 @@
 <section class="row">
   <div class = "column">
-    <h2>Create New Reservation</h2>
-
-    <form class="new-post-form">
-      <div>
-        <label for="post-title">Reservation</label>
-        <input type="text" id="post-title" name="post-title" />
-      </div>
-      <div>
-        <label for="post-text">Text</label>
-        <textarea id="post-text" name="post-text"></textarea>
-      </div>
-      <button type="submit" class="btn">Create</button>
-    </form>
+      <button class="btn"><a href="/reservations"> Create new reservation </a></button>
   </div>
-  <div class = "column">
-    <h2>About Me</h2>
-    {{> user-info}}
-  </div>
-
 </section>
 
-{{#if posts.length}}
+{{#if reservation.length}}
 <section>
   <h2>Your Reservations</h2>
   <ol>
-    {{#each posts as |post|}}
-    <li>
+    {{#each reservation as |reservation|}}
+    {{!-- <li>
       {{> post-info post}}
       <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit Reservation</a>
-    </li>
+    </li> --}}
     {{/each}}
   </ol>
 </section>
