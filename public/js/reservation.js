@@ -36,8 +36,7 @@ function empty() {
     var checkin = $("#checkin").val();
     var checkout = $("#checkout").val();
     var validate = true;
-    console.log(checkin);
-    console.log(checkout);
+    
     if (!email) {
       $("#email-validate").show();
       validate = false;
