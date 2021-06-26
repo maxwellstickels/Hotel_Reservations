@@ -1,16 +1,26 @@
+// const helpers = require('./unformat_date');
+
+function unformat_date(date) {
+  const regex = /-/g;
+  date.replace(regex, ".");
+  return `${new Date(date).getTime() / 1000}`;
+}
+
 async function newFormHandler(event) {
     event.preventDefault();
+    console.log("This showed up");
     if (empty()) {
     // var room = $("#room").val();
-    var checkin = $("#checkin").val();
-    var checkout = $("#checkout").val();
-
+    var checkin = unformat_date($("#checkin").val());
+    var checkout = unformat_date($("#checkout").val());
+    console.log(checkin + " " + checkout);
       const response = await fetch(`/api/reservations`, {
         method: 'POST',
         body: JSON.stringify({
           // room,
-          checkin,
-          checkout
+          start_date: checkin,
+          end_date: checkout,
+          user_id: req.session.userId,
         }),
         headers: {
           'Content-Type': 'application/json'
@@ -36,8 +46,6 @@ function empty() {
     var checkin = $("#checkin").val();
     var checkout = $("#checkout").val();
     var validate = true;
-    console.log(checkin);
-    console.log(checkout);
     if (!email) {
       $("#email-validate").show();
       validate = false;
