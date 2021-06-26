@@ -43,4 +43,17 @@ router.get('/signup', (req, res) => {
     res.render('signup');
 });
 
+router.get('/reservations', async (req, res) => {
+    try {
+        const userData = await Reservation.findByPk(req.session.user_id, {
+            attributes: { where: {user_id: req.session.user_id} },
+            include: [{ model: Project }],
+        });
+        const user = userData.get({ plain: true });
+        res.render('partials/reservations', { ...user, logged_in: true});
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
 module.exports = router;
