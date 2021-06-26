@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
 const withAuth = require('../utils/auth');
+const User = require('../models/User');
 
 // Currently just rendering main.handlebars.
 router.get('/', async (req, res) => {
@@ -8,19 +9,6 @@ router.get('/', async (req, res) => {
         res.render('homepage', { 
             logged_in: req.session.logged_in 
         });
-    } catch (err) {
-        res.status(500).json(err);
-    }
-});
-
-router.get('/dashboard', withAuth, async (req, res) => {
-    try {
-        const userData = await User.findByPk(req.session.user_id, {
-            attributes: { exclude: ['password'] },
-            include: [{ model: Project }],
-        });
-        const user = userData.get({ plain: true });
-        res.render('dashboard', { ...user, logged_in: true});
     } catch (err) {
         res.status(500).json(err);
     }
