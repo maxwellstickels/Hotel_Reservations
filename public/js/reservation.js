@@ -1,14 +1,16 @@
 async function newFormHandler(event) {
     event.preventDefault();
     if (empty()) {
-      const reservation = document.querySelector('input[name="reservation"]').value;
-      const room = document.querySelector('textarea[name="room"]').value;
+    // var room = $("#room").val();
+    var checkin = $("#checkin").val();
+    var checkout = $("#checkout").val();
 
       const response = await fetch(`/api/reservations`, {
         method: 'POST',
         body: JSON.stringify({
-          reservation,
-          room
+          // room,
+          checkin,
+          checkout
         }),
         headers: {
           'Content-Type': 'application/json'
@@ -34,6 +36,8 @@ function empty() {
     var checkin = $("#checkin").val();
     var checkout = $("#checkout").val();
     var validate = true;
+    console.log(checkin);
+    console.log(checkout);
     if (!email) {
       $("#email-validate").show();
       validate = false;
