@@ -1,24 +1,25 @@
 async function newFormHandler(event) {
     event.preventDefault();
+    if (empty()) {
+      const reservation = document.querySelector('input[name="reservation"]').value;
+      const room = document.querySelector('textarea[name="room"]').value;
 
-    const reservation = document.querySelector('input[name="reservation"]').value;
-    const room = document.querySelector('textarea[name="room"]').value;
+      const response = await fetch(`/api/reservations`, {
+        method: 'POST',
+        body: JSON.stringify({
+          reservation,
+          room
+        }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      });
 
-    const response = await fetch(`/api/reservations`, {
-      method: 'POST',
-      body: JSON.stringify({
-        reservation,
-        room
-      }),
-      headers: {
-        'Content-Type': 'application/json'
+      if (response.ok) {
+        document.location.replace('/dashboard');
+      } else {
+        alert(response.statusText);
       }
-    });
-
-    if (response.ok) {
-      document.location.replace('/dashboard');
-    } else {
-      alert(response.statusText);
     }
 }
   

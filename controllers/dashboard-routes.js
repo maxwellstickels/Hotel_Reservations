@@ -1,30 +1,29 @@
 
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-const User = require('../models/User');
-const Comment = require('../models/Comment');
 const Reservation = require('../models/Reservation');
+const Comment = require('../models/Comment');
+const User = require('../models/User');
+const withAuth = require('../utils/auth')
 
-const withAuth = require('../utils/auth');
-
-router.get('/', (req, res) => {
-  Reservation.findAll({
+router.get('/', withAuth, (req, res) => {
+    Reservation.findAll({
       where: {
         user_id: req.session.user_id
       },
       attributes: [
         'id',
-        'reservation_text',
-        'title',
-        'created_at',
+        'start_date',
+        'end_date',
+        'user_id',
       ],
       include: [
         {
           model: Comment,
-          attributes: ['id', 'comment_text', 'reservation_id', 'user_id', 'created_at'],
+          attributes: ['id', 'comment_text', 'user_id', 'created_at'],
           include: {
-            model: User,
-            attributes: ['username']
+              model: User,
+              attributes: ['username'],
           }
         },
         {

@@ -1,7 +1,6 @@
 const User = require('./User');
 const Reservation = require('./Reservation');
 const Comment = require('./Comment');
-
 const Room = require('./Room');
 
 User.hasMany(Reservation, {
