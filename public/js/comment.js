@@ -1,3 +1,4 @@
+const bw = require('bad-words');
 async function commentFormHandler(event) {
     event.preventDefault();
   
@@ -8,11 +9,14 @@ async function commentFormHandler(event) {
     ];
   
     if (comment_text) {
+      var Filter = require('bad-words'),
+      filter = new Filter();
+      const comment_filter = filter.clean(comment_text);
         const response = await fetch('/api/comments', {
           method: 'POST',
           body: JSON.stringify({
             post_id,
-            comment_text
+            comment_filter
           }),
           headers: {
             'Content-Type': 'application/json'
