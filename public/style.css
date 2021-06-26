@@ -7,6 +7,9 @@
 .nav-bright:hover {
   color:aqua;
 }
+label {
+  display:block;
+}
 
 .logo-bg {
   width: 100%;
@@ -38,9 +41,21 @@ nav {
 }
 
 header h1 {
-    font-size: 50px;
-    font-style: oblique;
-    background-color: gold;
+  font-size: 50px;
+  font-style: oblique;
+  background-color: gold;
+}
+
+.sub-header {
+  color:#faeaba;
+  text-align:left;
+  text-indent:0;
+}
+
+.sub-text {
+  color:#797777;
+  text-align:left;
+  text-indent:10px;
 }
 
 main {
@@ -62,13 +77,18 @@ footer {
   bottom: 0;
 }
 
-.hotel-background {
+.hotel-bg {
   width: 100%;
   background-image: url("https://www.gannett-cdn.com/-mm-/f85d715f4ef18e245988237e803cdef2db1daf68/c=0-255-4256-2656/local/-/media/USATODAY/test/2013/10/25/1382729502000-160857233.jpg");
+  object-fit: cover;
 }
 
-button a {
+.v-margin {
+  margin: 30px auto 80px auto;
+}
+
+button a, button a:hover, button a:visited, button a:focus {
+  color: inherit;
   text-decoration: none;
-  /*color: black;*/
 }
 
