@@ -33,6 +33,10 @@ Comment.init(
                 key: 'id'
             }
         },
+        created_at: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+        },
         rating: {
             type:DataTypes.TINYINT,
             allowNull: false

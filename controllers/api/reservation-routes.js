@@ -89,7 +89,8 @@ router.get('/:id', withAuth, (req, res) => {
   router.post('/', withAuth, (req, res) => {
     Reservation.create({
         title: req.body.title,
-        reservation_text: req.body.reservation_text,
+        start_date: req.body.start_date,
+        end_date: req.body.end_date,
         user_id: req.session.user_id
     })
     .then(dbReservationData => res.json(dbReservationData))
@@ -105,8 +106,8 @@ router.put('/:id', withAuth, (req, res) => {
         {
         where: {
             id: req.params.id
-            }
         }
+    }
     )
     .then(dbReservationData => {
         if (!dbReservationDataa) {
