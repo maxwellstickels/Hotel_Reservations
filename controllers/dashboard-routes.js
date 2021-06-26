@@ -1,24 +1,27 @@
 
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-const { Post, User, Comment } = require('../models');
-const withAuth = require('../utils/auth')
+const User = require('../models/User');
+const Comment = require('../models/Comment');
+const Reservation = require('../models/Reservation');
+
+const withAuth = require('../utils/auth');
 
 router.get('/', (req, res) => {
-    Post.findAll({
+  Reservation.findAll({
       where: {
         user_id: req.session.user_id
       },
       attributes: [
         'id',
-        'post_text',
+        'reservation_text',
         'title',
         'created_at',
       ],
       include: [
         {
           model: Comment,
-          attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+          attributes: ['id', 'comment_text', 'reservation_id', 'user_id', 'created_at'],
           include: {
             model: User,
             attributes: ['username']
@@ -30,9 +33,9 @@ router.get('/', (req, res) => {
         }
       ]
     })
-      .then(dbPostData => {
-        const posts = dbPostData.map(post => post.get({ plain: true }));
-        res.render('dashboard', { posts, loggedIn: true });
+      .then(dbReservationData => {
+        const reservations = dbReservationData.map(reservation => reservation.get({ plain: true }));
+        res.render('dashboard', { reservations, loggedIn: true });
       })
       .catch(err => {
         console.log(err);
@@ -43,20 +46,20 @@ router.get('/', (req, res) => {
 
 
 router.get('/edit/:id', withAuth, (req, res) => {
-  Post.findOne({
+  Reservation.findOne({
     where: {
       id: req.params.id
     },
     attributes: [
       'id',
-      'post_text',
+      'reservation_text',
       'title',
       'created_at',
     ],
     include: [
       {
         model: Comment,
-        attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+        attributes: ['id', 'comment_text', 'reservation_id', 'user_id', 'created_at'],
         include: {
           model: User,
           attributes: ['username']
@@ -68,14 +71,14 @@ router.get('/edit/:id', withAuth, (req, res) => {
       }
     ]
   })
-    .then(dbPostData => {
-      if (!dbPostData) {
-        res.status(404).json({ message: 'No post found with this id' });
+    .then(dbReservationData => {
+      if (!dbReservationData) {
+        res.status(404).json({ message: 'No reservation found with this id' });
         return;
       }
 
-      const post = dbPostData.get({ plain: true });
-      res.render('edit-post', { post, loggedIn: true });
+      const reservation = dbReservationData.get({ plain: true });
+      res.render('edit-reservation', { reservation, loggedIn: true });
     })
     .catch(err => {
       console.log(err);
