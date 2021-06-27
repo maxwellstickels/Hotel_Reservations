@@ -7,32 +7,29 @@ function unformat_date(date) {
 }
 
 async function newFormHandler(event) {
-    event.preventDefault();
-    console.log("This showed up");
-    if (empty()) {
+  event.preventDefault();
+  if (empty()) {
     // var room = $("#room").val();
     var checkin = unformat_date($("#checkin").val());
     var checkout = unformat_date($("#checkout").val());
     console.log(checkin + " " + checkout);
-      const response = await fetch(`/api/reservations`, {
-        method: 'POST',
-        body: JSON.stringify({
-          // room,
-          start_date: checkin,
-          end_date: checkout,
-          user_id: req.session.userId,
-        }),
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
-
-      if (response.ok) {
-        document.location.replace('/dashboard');
-      } else {
-        alert(response.statusText);
-      }
+    const response = await fetch(`/api/reservations`, {
+      method: "POST",
+      body: JSON.stringify({
+        // room,
+        start_date: checkin,
+        end_date: checkout,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    if (response.ok) {
+      document.location.replace("/dashboard");
+    } else {
+      alert(response.statusText);
     }
+  }
 }
   
 document.querySelector('.new-reservation-form').addEventListener('submit', newFormHandler);
