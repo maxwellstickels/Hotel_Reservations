@@ -7,8 +7,9 @@ const {Reservation, Comment, User} = require('../models');
 const withAuth = require('../utils/auth')
 
 router.get('/', withAuth, (req, res) => {
-  
-  Reservation.findAll({
+  if (!req.session.manager) {
+    
+    Reservation.findAll({
       where: {
         user_id: req.session.user_id
       },
@@ -41,8 +42,41 @@ router.get('/', withAuth, (req, res) => {
         console.log(err);
         res.status(500).json(err);
       });
+    } else {
+      Reservation.findAll({
+        
+        attributes: [
+          'id',
+          'start_date',
+          'end_date',
+          'user_id',
+        ],
+        include: [
+          {
+            model: Comment,
+            attributes: ['id', 'comment_text', 'user_id', 'created_at'],
+            include: {
+                model: User,
+                attributes: ['username'],
+              }
+          },
+          {
+            model: User,
+            attributes: ['username']
+          }
+        ]
+      })
+        .then(dbReservationData => {
+          const reservations = dbReservationData.map(reservation => reservation.get({ plain: true }));
+          res.render('dashboard', { reservations, loggedIn: true });
+        })
+        .catch(err => {
+          console.log(err);
+          res.status(500).json(err);
+        });
+      }
   });
-
+      
 
 
 router.get('/edit/:id', withAuth, (req, res) => {
