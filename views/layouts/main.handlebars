@@ -30,13 +30,12 @@
           </ul>
         <div class="text-end">
           {{#if loggedIn}}
-            <li class="nav-item">
-              <a href="/dashboard">Dashboard</a>
-            </li>
-            <li class="nav-item">
-              <button id="logout" class="btn-no-style">Logout</button>
-            </li>
-
+              <button type="button" class="btn btn-outline-light me-2">
+                <a href="/dashboard">Dashboard</a>
+              </button>
+              <button type="button" class="btn btn-info">
+                Log Out
+              </button>
             {{else}}
               <button type="button" class="btn btn-outline-light me-2">
                 <a href="/login">Login</a>

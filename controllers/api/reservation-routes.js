@@ -89,8 +89,8 @@ router.get('/:id', withAuth, (req, res) => {
   router.post('/', withAuth, (req, res) => {
     Reservation.create({
         title: req.body.title,
-        start_date: req.body.start_date,
-        end_date: req.body.end_date,
+        startDate: req.body.start_date,
+        endDate: req.body.end_date,
         user_id: req.session.user_id
     })
     .then(dbReservationData => res.json(dbReservationData))
