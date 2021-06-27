@@ -79,6 +79,7 @@ footer {
 
 .hotel-bg {
   width: 100%;
+  height: 100%;
   background-image: url("https://www.gannett-cdn.com/-mm-/f85d715f4ef18e245988237e803cdef2db1daf68/c=0-255-4256-2656/local/-/media/USATODAY/test/2013/10/25/1382729502000-160857233.jpg");
   object-fit: cover;
 }

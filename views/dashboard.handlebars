@@ -1,6 +1,6 @@
 <section class="row">
   <div class = "column">
-      <button class="btn"><a href="/reservations"> Create new reservation </a></button>
+      <button class="btn btn-secondary"><a href="/reservations"> Create new reservation </a></button>
   </div>
 </section>
 
@@ -8,10 +8,23 @@
 <section>
   <h2>Your Reservations</h2>
   <ol>
-    {{#each reservations}}
+    {{#each reservations as |reservation|}}
     <li>
-      {{format_date start_date}}
+      Reservation from {{format_date reservation.start_date}} to {{format_date reservation.end_date}}
       {{!-- <a href="/dashboard/edit/{{post.id}}" class="edit-link">Edit Reservation</a> --}}
+      {{!-- {{>comments reservation}} --}}
+      <div class="comments">
+        {{#each reservation.Comments}}
+        <section class="comment">
+          <div class="meta">
+            {{User.username}} on {{format_date created_at}}
+          </div>
+          <div class="text">
+            {{comment_text}}
+          </div>
+        </section>
+        {{/each}}
+      </div>
     </li>
     {{/each}}
   </ol>
