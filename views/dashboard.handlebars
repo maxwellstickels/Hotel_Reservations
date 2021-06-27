@@ -7,7 +7,6 @@
 {{#if reservations.length}}
 <section>
   <h2>Your Reservations</h2>
-  <ol>
     {{#each reservations as |reservation|}}
     <li>
       Reservation from {{format_date reservation.start_date}} to {{format_date reservation.end_date}}
@@ -27,6 +26,5 @@
       </div>
     </li>
     {{/each}}
-  </ol>
 </section>
 {{/if}}

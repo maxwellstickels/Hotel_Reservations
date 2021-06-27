@@ -39,7 +39,6 @@ Comment.init(
         // },
         rating: {
             type:DataTypes.TINYINT,
-            allowNull: false
         }
     },
     {
