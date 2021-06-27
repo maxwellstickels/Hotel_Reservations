@@ -7,7 +7,7 @@ module.exports = {
         date.replace(regex, ".");
         console.log(date);
         console.log("UNFORMATTED: " + new Date(date).getTime());
-        return `${new Date(date).getTime() / 1000}`;
+        return `${new Date(date).getTime() / (100 * 10)}`;
     },
     format_plural: (word, amount) => {
         if (amount !== 1) {
