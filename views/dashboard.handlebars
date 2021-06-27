@@ -20,10 +20,20 @@
             {{user.username}} on {{format_date created_at}}
           </div>
           <div class="text">
-            {{comment_text}}
+            
+            {{comment_text }}
           </div>
         </section>
         {{/each}}
+          <form class="comment-form">
+            <div>
+              <textarea name="comment-body"></textarea>
+            </div>
+          <div>
+            <button type="submit">Add comment</button>
+          </div>
+          </form>
+          {{> comments post.comments}}
       </div>
     </li>
     {{/each}}
