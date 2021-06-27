@@ -12,11 +12,11 @@ Reservation.init(
             autoIncrement: true,
         },
         startDate: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.BIGINT,
             allowNull: false,
         },
         endDate: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.BIGINT,
             allowNull: false,
         },
         user_id: {
