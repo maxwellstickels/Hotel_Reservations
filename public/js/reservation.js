@@ -1,9 +1,12 @@
 // const helpers = require('./unformat_date');
 
 function unformat_date(date) {
+  //const timeZone = new TimeZone();
+  //timeZone = TimeZone.getTimeZone("GMT+0:00");
+  //TimeZone.setDefault(timeZone);
   const regex = /-/g;
   date.replace(regex, ".");
-  return `${new Date(date).getTime() / 1000}`;
+  return `${Math.ceil(new Date(date).getTime())}`;
 }
 
 async function newFormHandler(event) {
